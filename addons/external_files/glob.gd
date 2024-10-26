@@ -126,11 +126,9 @@ static func get_globs(pattern_file: String) -> Array:
 			if not _match.get_string(1):
 				printerr("No path given in root directive in '%s':%d" % [pattern_file, lineno])
 				return []
-			dir = "/".join(
-				ProjectSettings.globalize_path("res://").split("/").slice(0, -1)
-			).path_join(
-				_match.get_string(1)
-			)
+			dir = _match.get_string(1)
+			if not dir.is_absolute_path():
+				dir = ProjectSettings.globalize_path("res://").get_base_dir().path_join(dir)
 			continue
 
 		if line.begins_with("#"):
