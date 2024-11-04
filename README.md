@@ -63,15 +63,15 @@ To use the plugin, you will need to create some files which will instruct it wha
 First determine what assets need to be shared. For example, let's assume your project's repository looks like this:
 
 
-    my_game
-    ├── godot
-    │   ├── assets
-    │   │   └── sprites
+    my_game/
+    ├── godot/
+    │   ├── assets/
+    │   │   └── sprites/
     │   └── project.godot
-    └── renpy
-        └── game
-            └── images
-                └── sprites
+    └── renpy/
+        └── game/
+            └── images/
+                └── sprites/
                     ├── some_sprite.png
                     ├── other_sprite.png
                     └── ...
@@ -88,7 +88,7 @@ To do that, create a file called `godot/assets/sprites/.external_files`, then pu
 
 Now reload your Godot project, or click <kbd>Project</kbd> → <kbd>Tools</kbd> → <kbd>External files</kbd> → <kbd>Re-scan</kbd>. You will see that `godot/assets/sprites/some_sprite.png` has been automatically copied and imported by Godot.
 
-Depending on the number of files, it might take a while for all the files to be copied and imported. This is a single-time operation; the next time the project will open instantly and not copy anything, unless some files have changed.
+Depending on the number of files, it might take a while for all the files to be copied and imported. This is a one-time operation; the next time the project will open instantly and not copy anything, unless some files have changed.
 
 <!-- gdasset: markdown
 For full usage information and description of the syntax, click View files to visit the plugin's home page.
