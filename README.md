@@ -25,9 +25,12 @@ The intended use-case is a pretty specific situation, where some assets might li
 Unlike just copying the files, the referenced external files will be kept up to date, and will also not bloat your repository. And unlike symlinks, the plugin doesn't need OS support and thus can be run easily on Windows, or with version control systems like Mercurial, which do not support symlinks at all (again, due to their lack of portability).
 
 <!-- gdasset: markdown
-For full documentation, click View files to visit the plugin's home page.
--->
+For full documentation, click "View files" to visit the plugin's home page.
 
+-->
+<!-- gdasset: changelog
+     items: 3
+     heading: Changes -->
 <!-- gdasset: exclude -->
 
 Installation
@@ -91,7 +94,7 @@ Now reload your Godot project, or click <kbd>Project</kbd> → <kbd>Tools</kbd> 
 Depending on the number of files, it might take a while for all the files to be copied and imported. This is a one-time operation; the next time the project will open instantly and not copy anything, unless some files have changed.
 
 <!-- gdasset: markdown
-For full usage information and description of the syntax, click View files to visit the plugin's home page.
+For full usage information and description of the syntax, click "View files" to visit the plugin's home page.
 -->
 <!-- gdasset: exclude -->
 
