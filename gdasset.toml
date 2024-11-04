@@ -1,0 +1,15 @@
+# These are default values for the project's submission to Godot Asset Library
+# through Godot Asset Uploader (gdasset). It is safe to track and commit this
+# file through your version control system.
+
+[gdasset]
+plugin = "addons/external_files/plugin.cfg"
+godot_version = "4.2"
+category = 5
+licence = "MIT"
+title = "External files"
+icon_url = " https://raw.githubusercontent.com/mathrick/godot-external-files/refs/heads/main/icon.png"
+repo_url = "https://github.com/mathrick/godot-external-files"
+repo_provider = "GitHub"
+issues_url = "https://github.com/mathrick/godot-external-files/issues"
+download_url = "https://github.com/mathrick/godot-external-files/archive/1584da1f97b1ab7fb99f55b065c4fa8791ab9c0c.zip"
