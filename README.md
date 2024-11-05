@@ -25,7 +25,7 @@ The intended use-case is a pretty specific situation, where some assets might li
 Unlike just copying the files, the referenced external files will be kept up to date, and will also not bloat your repository. And unlike symlinks, the plugin doesn't need OS support and thus can be run easily on Windows, or with version control systems like Mercurial, which do not support symlinks at all (again, due to their lack of portability).
 
 <!-- gdasset: markdown
-For full documentation, click "View files" to visit the plugin's home page.
+For full documentation, click "View files" and visit the plugin's home page.
 
 -->
 <!-- gdasset: changelog
@@ -89,12 +89,14 @@ To do that, create a file called `godot/assets/sprites/.external_files`, then pu
     
     *.png
 
-Now reload your Godot project, or click <kbd>Project</kbd> → <kbd>Tools</kbd> → <kbd>External files</kbd> → <kbd>Re-scan</kbd>. You will see that `godot/assets/sprites/some_sprite.png` has been automatically copied and imported by Godot.
+> **NOTE**: Godot's editor limits what kinds of files it will let you create, and will NOT allow you to make or edit `.external_files`. You will need to use a different text editor, and they will not show up in the filesystem dock inside Godot.
+
+Now reload your Godot project, or click <kbd>Project</kbd> → <kbd>Tools</kbd> → <kbd>External files</kbd> → <kbd>Re-scan</kbd>. You will see that `godot/assets/sprites/some_sprite.png` and `godot/assets/sprites/other_sprite.png` have been automatically copied and imported by Godot.
 
 Depending on the number of files, it might take a while for all the files to be copied and imported. This is a one-time operation; the next time the project will open instantly and not copy anything, unless some files have changed.
 
 <!-- gdasset: markdown
-For full usage information and description of the syntax, click "View files" to visit the plugin's home page.
+For full usage information and description of the syntax, click "View files" and visit the plugin's home page.
 -->
 <!-- gdasset: exclude -->
 
@@ -129,16 +131,20 @@ For more information on the `hgignore` syntax, please refer to [official Mercuri
 Ignoring copied files
 ---------------------
 
-Since it's assumed you're using this plugin together with a version control system like Mercurial, it is important to inform it that the copied files should not be stored.
+Since it's assumed you're using this plugin together with a version control system like Mercurial, it is important to inform it that the copied files should not be checked in.
 
-If you're using Mercurial, then it can be accomplished directly, by adding the following line in your `.hgignore`:
+If you're using Mercurial, then it can be accomplished by using the `.external_files` as an ignore file directly. In our example, this is done by adding the following line in your `.hgignore`:
 
     subinclude:godot/assets/sprites/.external_files
 
 (Of course, substitute the file path to whatever `.external_files` files you actually added). Make sure you're using `subinclude:` specifically; there are other include directives Mercurial supports, but those will not work properly with `.external_files`.
 
+Once the files are included in your `.hgignore`, any changes will automatically be picked up by Mercurial, so you won't need to adjust your ignore rules if you add or edit patterns.
+
 Otherwise, if you're using Git (or another version control system), you will need to ignore the copied files manually, using a command such as
 
     $ git ignore 'godot/assets/sprites/*.png'
+
+In this case, the ignore rules are stored separately from the patterns in your `.external_files`, so you will need to remember to keep them in sync if you change the patterns.
     
-> **NOTE**: Regardless of what method of ignoring you use, _all_ files matching the pattern will be ignored, even the ones that weren't copied by the plugin. It's recommended never to mix external and local files in a single location. Otherwise you're very likely to end up forgetting to track valuable files. For example, you could dedicate `godot/assets/external/` to shared external assets, and keep assets exclusive to your Godot project directly under `godot/assets/`
+> **NOTE**: Regardless of what method of ignoring you use, _all_ files matching the ignore pattern will be ignored, even the ones that weren't copied by the plugin. It's recommended never to mix external and local files in a single location. Otherwise you're very likely to end up forgetting to track valuable files. For example, you could dedicate `godot/assets/external/` to shared external assets, and keep assets exclusive to your Godot project directly under `godot/assets/`
